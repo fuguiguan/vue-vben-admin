@@ -8,6 +8,12 @@
     "line": "折线图",
     "pie": "饼图"
   },
+  "product": {
+    "product": "商品",
+    "productList": "商品列表",
+    "productAdd": "添加商品",
+    "productCategory": "商品分类"
+  },
   "comp": {
     "comp": "组件",
     "basic": "基础组件",

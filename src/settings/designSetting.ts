@@ -1,6 +1,6 @@
 import { ThemeEnum } from '../enums/appEnum';
 
-export const prefixCls = 'vben';
+export const prefixCls = 'yuji';
 
 export const multipleTabHeight = 30;
 
