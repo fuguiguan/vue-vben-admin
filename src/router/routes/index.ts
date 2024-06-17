@@ -10,7 +10,8 @@ import { t } from '@/hooks/web/useI18n';
 const modules = import.meta.glob('./modules/product/**/*.ts', { eager: true });
 const modules2 = import.meta.glob('./modules/demo/**/*.ts', { eager: true });
 const routeModuleList: AppRouteModule[] = [];
-console.log('modules:', modules);
+const routeModuleList2: AppRouteModule[] = [];
+console.log('modules2:', modules2);
 
 // 加入到路由集合中，自定义路由页面
 Object.keys(modules).forEach((key) => {
@@ -20,12 +21,12 @@ Object.keys(modules).forEach((key) => {
 });
 // 加入到路由集合中,项目内置路由页面
 Object.keys(modules2).forEach((key) => {
-  const mod = (modules as Recordable)[key].default || {};
+  const mod = (modules2 as Recordable)[key].default || {};
   const modList = Array.isArray(mod) ? [...mod] : [mod];
-  routeModuleList.push(...modList);
+  routeModuleList2.push(...modList);
 });
 //这里只加载自己定的路由，符合自身业务的页面对应的路由
-export const asyncRoutes = [PAGE_NOT_FOUND_ROUTE, ...routeModuleList];
+export const asyncRoutes = [PAGE_NOT_FOUND_ROUTE, ...routeModuleList, ...routeModuleList2];
 
 // 根路由
 export const RootRoute: AppRouteRecordRaw = {

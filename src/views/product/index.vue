@@ -1,5 +1,11 @@
 <template>
   <div class="p-4">
+    <!-- <Card title="仓库管理" :bordered="false">
+      <BasicForm @register="register" />
+    </Card> -->
+    <SearchForm />
+    <!-- <SearchInput /> -->
+    <a-space />
     <BasicTable @register="registerTable">
       <template #bodyCell="{ column, record, text }">
         <template v-if="column.key === 'id'"> ID: {{ record.id }} </template>
@@ -28,11 +34,75 @@
   </div>
 </template>
 <script lang="tsx" setup>
-  import { h } from 'vue';
+  // import { h } from 'vue';
+  import SearchForm from './comp/searchForm.vue';
+  import SearchInput from './comp/searchInput.vue';
+  import { BasicForm, useForm } from '@/components/Form';
   import { BasicTable, useTable, BasicColumn, TableImg } from '@/components/Table';
-  import { Tag, Avatar } from 'ant-design-vue';
+  import { Tag, Avatar, Card } from 'ant-design-vue';
   import { demoListApi } from '@/api/demo/table';
 
+  // const [registerTable, { getForm }] = useTable({
+  //   title: '开启搜索区域',
+  //   api: demoListApi,
+  //   columns: [
+  //     {
+  //       title: 'ID',
+  //       width: 150,
+  //       dataIndex: 'id',
+  //       sorter: true,
+  //       sortOrder: 'ascend',
+  //     },
+  //   ],
+  //   useSearchForm: true,
+  //   formConfig: {
+  //     labelWidth: 100,
+  //     schemas: [
+  //       {
+  //         field: `field${0}`,
+  //         label: `字段${0}`,
+  //         component: 'Input',
+  //         colProps: {
+  //           xl: 12,
+  //           xxl: 8,
+  //         },
+  //       },
+  //       {
+  //         field: `field11`,
+  //         label: `Slot示例`,
+  //         slot: 'custom',
+  //         colProps: {
+  //           xl: 12,
+  //           xxl: 8,
+  //         },
+  //       },
+  //     ],
+  //   },
+  //   showTableSetting: true,
+  //   tableSetting: { fullScreen: true },
+  //   showIndexColumn: false,
+  //   rowKey: 'id',
+  //   rowSelection: {
+  //     type: 'checkbox',
+  //   },
+  //   showSelectionBar: true, // 显示多选状态栏
+  // });
+  const schemas = [
+    {
+      field: 'f1',
+      component: 'Input',
+      label: '仓库名',
+      required: true,
+    },
+  ];
+  const [register, { validate }] = useForm({
+    layout: 'vertical',
+    baseColProps: {
+      span: 6,
+    },
+    schemas: schemas,
+    showActionButtonGroup: false,
+  });
   const columns: BasicColumn[] = [
     {
       title: '商品ID',

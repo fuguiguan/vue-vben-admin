@@ -3,7 +3,7 @@ import type { AppRouteModule } from '@/router/types';
 import { getParentLayout, LAYOUT } from '@/router/constant';
 import { t } from '@/hooks/web/useI18n';
 
-const charts: AppRouteModule = {
+const products: AppRouteModule = {
   path: '/products',
   name: 'Product',
   component: LAYOUT,
@@ -23,16 +23,16 @@ const charts: AppRouteModule = {
       component: () => import('@/views/product/index.vue'),
     },
     {
-      path: 'aMap',
-      name: 'AMap',
+      path: 'add',
+      name: 'Add',
       meta: {
         title: t('routes.product.product.add'),
       },
-      component: () => import('@/views/demo/charts/map/Gaode.vue'),
+      component: () => import('@/views/product/AddProduct.vue'),
     },
     {
-      path: 'googleMap',
-      name: 'GoogleMap',
+      path: 'category',
+      name: 'Category',
       meta: {
         title: t('routes.product.product.category'),
       },
@@ -41,4 +41,4 @@ const charts: AppRouteModule = {
   ],
 };
 
-export default charts;
+export default products;
